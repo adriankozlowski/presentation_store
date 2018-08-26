@@ -5,7 +5,7 @@
   - Wszystkie nieabstrakcyjne klasy z pakietu pl.sdacademy.spring.car_dealer.repository<br>
   - Wszystkie klasy z pakietu pl.sdacademy.store.service, oraz wstrzyknij do nich potrzebne beany<br>
   - Wszystkie klasy z pakietu pl.sdacademy.store.controller, oraz wstrzyknij do nich potrzebne beany<br>
-  - Klasę pl.sdacademy.store.StoreApplication oraz wstrzyknij do niej wymagane klasy controller<br>
+  - Klasę pl.sdacademy.store.Application oraz wstrzyknij do niej wymagane klasy controller<br>
 4. Z klasy StoreApplication usuń tworzenie instancji zależnych klas oraz ich ustawianie w klasach
 5. W klasie Main pobierz bean Application, uruchom projekt i sprawdź, czy wykonuje się poprawnie
 
@@ -83,7 +83,7 @@ repository.vehicle.hardDriveLocation
 
 ### część 9
 41. Przerób wszystkie klasy beanów tak, aby używały konstruktora do wstrzykiwania
-42. Zwróć uwagę, aby wstrzykiwać interface, a nie implementację (czyli np. wstrzykuj VehicleRepository a nie HardDriveVehicleRepository). Zwracaj także uwagę na nazwę parametru (np. purchaseRepository a nie hardDrivePurchaseRepository)
+42. Zwróć uwagę, aby wstrzykiwać interface, a nie implementację (czyli np. wstrzykuj VehicleRepository a nie HardDriveVehicleRepository). Zwracaj także uwagę na nazwę parametru (np. claimRepository a nie hardDrivePurchaseRepository)
 43. Usuń wszystkie użycia @Autowire
 44. Pamiętaj, że @Value może być użyte także w konstruktorze
 45. Uruchom aplikację i sprawdź czy działa (ważne aby sprawdzić działanie przed następnym punktem)

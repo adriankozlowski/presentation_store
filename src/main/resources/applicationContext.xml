@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- repositories -->
+    <bean name="hardDrivePolicyRepository"
+        class="pl.sdacademy.store.repository.HardDrivePolicyRepository"/>
+    <bean name="hardDriveCustomerRepository"
+          class="pl.sdacademy.store.repository.HardDriveCustomerRepository"/>
+    <bean name="hardDriveClaimRepository"
+          class="pl.sdacademy.store.repository.HardDriveClaimRepository"/>
+
+    <!-- services -->
+    <bean name="defaultPolicyDataService"
+          class="pl.sdacademy.store.service.DefaultPolicyDataService">
+        <constructor-arg index="0" ref="hardDrivePolicyRepository"/>
+        <constructor-arg index="1" ref="hardDriveClaimRepository"/>
+    </bean>
+    <bean name="defaultSellingService"
+          class="pl.sdacademy.store.service.DefaultSellingService">
+        <constructor-arg index="0" ref="hardDrivePolicyRepository"/>
+        <constructor-arg index="1" ref="hardDriveCustomerRepository"/>
+        <constructor-arg index="2" ref="hardDriveClaimRepository"/>
+    </bean>
+
+    <!-- controllers -->
+    <bean name="claimController"
+          class="pl.sdacademy.store.controller.ClaimController">
+        <constructor-arg index="0" ref="defaultPolicyDataService"/>
+    </bean>
+    <bean name="policyController"
+          class="pl.sdacademy.store.controller.PolicyController">
+        <constructor-arg index="0" ref="defaultSellingService"/>
+        <constructor-arg index="1" ref="defaultPolicyDataService"/>
+    </bean>
+
+    <bean name="application"
+          class="pl.sdacademy.store.Application">
+        <property name="claimController" ref="claimController"/>
+        <property name="policyController" ref="policyController"/>
+    </bean>
+</beans>
