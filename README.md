@@ -2,16 +2,16 @@
 1. Dodaj dependency do spring-context
 2. Utwórz plik applicationContext.xml w src/main/resources
 3. Dodaj do applicationContext.xml następujące beany:<br>
-  - Wszystkie nieabstrakcyjne klasy z pakietu pl.sdacademy.spring.car_dealer.repository<br>
+  - Wszystkie nieabstrakcyjne klasy z pakietu pl.sdacademy.store.repository<br>
   - Wszystkie klasy z pakietu pl.sdacademy.store.service, oraz wstrzyknij do nich potrzebne beany<br>
   - Wszystkie klasy z pakietu pl.sdacademy.store.controller, oraz wstrzyknij do nich potrzebne beany<br>
   - Klasę pl.sdacademy.store.Application oraz wstrzyknij do niej wymagane klasy controller<br>
-4. Z klasy StoreApplication usuń tworzenie instancji zależnych klas oraz ich ustawianie w klasach
+4. Z klasy Application usuń tworzenie instancji zależnych klas oraz ich ustawianie w klasach
 5. W klasie Main pobierz bean Application, uruchom projekt i sprawdź, czy wykonuje się poprawnie
 
 Dodatkowe:
 
-6. W klasach *Resource dodaj metody initialize() oraz cleanUp(), w których wypiszesz na ekran informacje o „Initializing Repository” oraz „Cleaning up repository”. 
+6. W klasach *Repository dodaj metody initialize() oraz cleanUp(), w których wypiszesz na ekran informacje o „Initializing Repository” oraz „Cleaning up repository”. 
 7. W applicationContext.xml dodaj dla beanów *Resource atrybuty init-method oraz destroy-method tak, aby wywoływały odpowiednie metody
 8. Aby umożliwić wykonywanie metod z destroy-method, w klasie Main zmień typ obiektu applicationContext na AbstractApplicationContext oraz wywołaj na nim metodę close().
 ```
@@ -20,19 +20,19 @@ Application application = applicationContext.getBean("application", Application.
 application.start();
 ```
 
-### cześć 2
+### cześć 2 - autowire
 Następnie: Stwórz taką konfigurację, aby:
 
 9. Beany będące Serwisami używały autowire za pomocą konstruktora. Pamiętaj o usunięciu setterów w klasie beana oraz interface!
 10. Beany będące Controllerami powinny używać autowire byType
 11. Bean Application powinien używać autowire byName
 
-### cześć 3
+### cześć 3 - value w konstruktorze
 11. Skonfiguruj repositoryLocation dla beana hardDriveCustomerRepository tak, aby było ustawiane za pomocą konstruktora
 12. Skonfiguruj repositoryLocation dla beana hardDrivePurchaseRepository tak, aby było ustawiane za pomocą konstruktora
 13. Skonfiguruj repositoryLocation dla beana hardDriveVehicleRepository tak, aby było ustawiane za pomocą konstruktora
 
-### cześć 4
+### cześć 4 - wartości w pliku konfiguracyjnym
 14. W katalogu src/main/resources utwórz plik application.properties
 15. Do pliku application.properties dodaj następujące klucze oraz odpowiednie dla nich wartości:
 
@@ -45,7 +45,7 @@ repository.vehicle.hardDriveLocation
 17. Zmień konfigurację beanów repozytoriów tak, aby używały wartości zapisanych w pliku konfiguracyjnym
 18. Uruchom i zweryfikuj, czy aplikacja działa
 
-### część 5
+### część 5 - konfiguracja przez adnotacje
 19. Zmień konfigurację applicationContext.xml tak, aby definiowała użycie adnotacji
 20. Usuń stare konfiguracje beanów.
 21. W głównym pakiecie aplikacji stwórz klasę ApplicationConfiguration

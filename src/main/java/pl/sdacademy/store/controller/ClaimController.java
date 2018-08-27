@@ -18,8 +18,10 @@ public class ClaimController {
     public void printReportedClaims() {
         System.out.println("Do której polisy chcesz zgłosić szkodę?");
         Long aLong = Long.valueOf(readInput());
-        Policy policy = policyDataService.findById(aLong);
-        if(policy==null){
+        Policy policy = null;
+        try {
+            policy = policyDataService.findById(aLong);
+        } catch (Exception e) {
             System.out.println("Nie istnieje taka polisa w naszym systemie");
             return;
         }
