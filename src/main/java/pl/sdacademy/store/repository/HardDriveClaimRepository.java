@@ -5,7 +5,11 @@ import pl.sdacademy.store.model.Claim;
 import java.util.List;
 
 public class HardDriveClaimRepository extends AbstractHardDriveRepository<Claim> implements ClaimRepository {
-    private final String repositoryLocation = "claims.ser";
+    private final String repositoryLocation;
+
+    public HardDriveClaimRepository(String repoLocation) {
+        this.repositoryLocation = repoLocation;
+    }
 
     @Override
     public List<Claim> getAll() {

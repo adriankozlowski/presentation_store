@@ -2,17 +2,17 @@ package pl.sdacademy.store.controller;
 
 import pl.sdacademy.store.model.Claim;
 import pl.sdacademy.store.model.Policy;
-import pl.sdacademy.store.service.DefaultPolicyDataService;
+import pl.sdacademy.store.service.PolicyDataService;
 
 import java.util.Date;
 import java.util.Scanner;
 
 public class ClaimController {
 
-    private final DefaultPolicyDataService policyDataService;
+    private final PolicyDataService policyDataService;
 
-    public ClaimController(DefaultPolicyDataService defaultPolicyDataService) {
-        this.policyDataService = defaultPolicyDataService;
+    public ClaimController(PolicyDataService PolicyDataService) {
+        this.policyDataService = PolicyDataService;
     }
 
     public void printReportedClaims() {

@@ -2,8 +2,7 @@ package pl.sdacademy.store.controller;
 
 import pl.sdacademy.store.model.Customer;
 import pl.sdacademy.store.model.Policy;
-import pl.sdacademy.store.service.DefaultPolicyDataService;
-import pl.sdacademy.store.service.DefaultSellingService;
+import pl.sdacademy.store.service.PolicyDataService;
 import pl.sdacademy.store.service.SellingService;
 
 import java.util.List;
@@ -12,9 +11,9 @@ import java.util.Scanner;
 public class PolicyController {
 
     private final SellingService sellingService;
-    private final DefaultPolicyDataService policyDataService;
+    private final PolicyDataService policyDataService;
 
-    public PolicyController(DefaultSellingService defaultSellingService, DefaultPolicyDataService defaultPolicyDataService) {
+    public PolicyController(SellingService defaultSellingService, PolicyDataService defaultPolicyDataService) {
         this.sellingService = defaultSellingService;
         this.policyDataService = defaultPolicyDataService;
     }

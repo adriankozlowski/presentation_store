@@ -5,7 +5,11 @@ import pl.sdacademy.store.model.Customer;
 import java.util.List;
 
 public class HardDriveCustomerRepository extends AbstractHardDriveRepository<Customer> implements CustomerRepository {
-    private final String repositoryLocation = "customers.ser";
+    private final String repositoryLocation;
+
+    public HardDriveCustomerRepository(String repoLocation) {
+        this.repositoryLocation = repoLocation;
+    }
 
     public Customer byId(Long id) {
         return loadAllElements().stream().filter(customer -> customer.getId().equals(id)).findAny().orElse(null);

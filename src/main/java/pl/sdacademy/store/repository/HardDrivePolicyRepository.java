@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 
 public class HardDrivePolicyRepository extends AbstractHardDriveRepository<Policy> implements PolicyRepository {
 
-    private final String repositoryLocation = "policies.ser";
+    private final String repositoryLocation;
+
+    public HardDrivePolicyRepository(String repoLocation) {
+        this.repositoryLocation=repoLocation;
+    }
 
     @Override
     public Policy byId(Long id) {

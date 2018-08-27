@@ -1,12 +1,12 @@
 package pl.sdacademy.store;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationContext.xml");
+                new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
         Application application = applicationContext.getBean("application", Application.class);
         application.start();
     }
